@@ -3,6 +3,7 @@
 import Galaxy from "@/components/Galaxy";
 import Image from "next/image";
 import TextType from "./TextType";
+import Button from "./ui/Button/Button";
 
 export default function Hero() {
   return (
@@ -20,7 +21,7 @@ export default function Hero() {
         /> */}
       </div>
 
-      <div className="relative z-10 max-w-6xl mx-auto px-6 min-h-screen flex items-center">
+      <div className="relative z-10 max-w-6xl mx-auto px-6 min-h-screen flex items-center pt-40 md:pt-0">
         <div className="grid grid-cols-1 md:grid-cols-5 gap-12 w-full">
           {/* Left content */}
           <div className="md:col-span-3 flex flex-col justify-center max-w-2xl">
@@ -53,21 +54,8 @@ export default function Hero() {
             </p>
 
             <div className="mt-8 flex gap-4">
-              <a
-                href="#projects"
-                className="px-6 py-3 bg-(--primary) text-white rounded-lg font-medium
-                   hover:scale-105 hover:shadow-lg transition"
-              >
-                View Projects
-              </a>
-
-              <a
-                href="#contact"
-                className="px-6 py-3 border border-white/30 rounded-lg
-                   hover:bg-white/10 transition"
-              >
-                Contact Me
-              </a>
+              <Button type="submit">View Projects</Button>
+              <Button type="submit">Contact Me</Button>
             </div>
           </div>
 

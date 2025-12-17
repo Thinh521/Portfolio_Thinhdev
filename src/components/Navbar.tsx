@@ -1,6 +1,8 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
+import Button from "./ui/Button/Button";
+import { Menu, X } from "lucide-react";
 
 const links = [
   { label: "Home", href: "#home" },
@@ -14,66 +16,157 @@ const links = [
 export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
   const [active, setActive] = useState("#home");
+  const [open, setOpen] = useState(false);
 
+  const listRef = useRef<HTMLUListElement>(null);
+  const indicatorRef = useRef<HTMLSpanElement>(null);
+
+  /* ===== Scroll spy ===== */
   useEffect(() => {
     const onScroll = () => {
       setScrolled(window.scrollY > 10);
+
+      const scrollPos = window.scrollY + 120;
+
+      links.forEach((link) => {
+        const sec = document.querySelector(link.href);
+        if (!sec) return;
+
+        const top = sec.getBoundingClientRect().top + window.scrollY;
+        const height = sec.clientHeight;
+
+        if (scrollPos >= top && scrollPos < top + height) {
+          setActive(link.href);
+        }
+      });
     };
 
     window.addEventListener("scroll", onScroll);
+    onScroll();
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
-  return (
-    <nav
-      className={`
-        fixed z-50 transition-all duration-300
-        ${scrolled ? "top-0 left-0 right-0" : "top-6 left-20 right-20"}
-        backdrop-blur bg-black/60 border border-white/10
-        rounded-xl
-      `}
-    >
-      <div className="max-w-6xl mx-auto h-16 px-6 flex items-center justify-between">
-        {/* Logo */}
-        <span className="font-bold text-lg tracking-tight">
-          thjnh<span className="text-white/60">.dev</span>
-        </span>
+  /* ===== Underline slide (desktop) ===== */
+  useEffect(() => {
+    if (!listRef.current || !indicatorRef.current) return;
 
-        {/* Links */}
-        <ul className="hidden md:flex gap-8 text-sm">
+    const index = links.findIndex((l) => l.href === active);
+    const item = listRef.current.children[index] as HTMLElement;
+
+    if (!item) return;
+
+    indicatorRef.current.style.width = `${item.offsetWidth}px`;
+    indicatorRef.current.style.transform = `translateX(${item.offsetLeft}px)`;
+  }, [active]);
+
+  return (
+    <>
+      <nav
+        className={`
+          fixed z-50 transition-all duration-300
+          ${
+            scrolled
+              ? "top-0 left-0 right-0"
+              : "top-6 left-4 right-4 md:left-20 md:right-20"
+          }
+          backdrop-blur bg-black/60 border border-white/10
+          rounded-xl
+        `}
+      >
+        <div className="max-w-6xl mx-auto h-16 px-6 flex items-center justify-between">
+          {/* Logo */}
+          <span className="font-bold text-lg tracking-tight">
+            thjnh<span className="text-white/60">.dev</span>
+          </span>
+
+          {/* Desktop menu */}
+          <div className="relative hidden md:block">
+            <ul ref={listRef} className="flex gap-8 text-sm relative">
+              {links.map((link) => (
+                <li key={link.href}>
+                  <a
+                    href={link.href}
+                    className={`transition ${
+                      active === link.href
+                        ? "text-(--primary)"
+                        : "text-gray-400 hover:text-white"
+                    }`}
+                  >
+                    {link.label}
+                  </a>
+                </li>
+              ))}
+
+              <span
+                ref={indicatorRef}
+                className="absolute -bottom-2 left-0 h-0.5
+                           bg-(--primary)
+                           transition-all duration-300"
+              />
+            </ul>
+          </div>
+
+          {/* Desktop button */}
+          <div className="hidden md:block">
+            <Button>Resume</Button>
+          </div>
+
+          {/* Mobile menu button */}
+          <button onClick={() => setOpen(true)} className="md:hidden">
+            <Menu size={24} />
+          </button>
+        </div>
+      </nav>
+
+      {/* ===== Mobile menu overlay ===== */}
+      <div
+        className={`fixed inset-0 z-40 bg-black/70 backdrop-blur
+                    transition-opacity duration-300
+                    ${open ? "opacity-100 visible" : "opacity-0 invisible"}`}
+        onClick={() => setOpen(false)}
+      />
+
+      {/* ===== Mobile menu panel ===== */}
+      <div
+        className={`fixed top-0 right-0 z-50 h-full w-72 bg-black
+                    border-l border-white/10
+                    transform transition-transform duration-300
+                    ${open ? "translate-x-0" : "translate-x-full"}`}
+      >
+        <div className="p-6 flex items-center justify-between">
+          <span className="font-bold text-lg">
+            thjnh<span className="text-white/60">.dev</span>
+          </span>
+          <button onClick={() => setOpen(false)}>
+            <X size={22} />
+          </button>
+        </div>
+
+        <ul className="flex flex-col gap-6 px-6 mt-8">
           {links.map((link) => (
             <li key={link.href}>
               <a
                 href={link.href}
-                onClick={() => setActive(link.href)}
-                className={`relative transition
-                  ${
-                    active === link.href
-                      ? "text-white"
-                      : "text-gray-400 hover:text-white"
-                  }
-                `}
+                onClick={() => {
+                  setActive(link.href);
+                  setOpen(false);
+                }}
+                className={`block text-lg transition ${
+                  active === link.href
+                    ? "text-(--primary)"
+                    : "text-gray-400 hover:text-white"
+                }`}
               >
                 {link.label}
-                {active === link.href && (
-                  <span className="absolute -bottom-1 left-0 w-full h-[2px] bg-white rounded-full" />
-                )}
               </a>
             </li>
           ))}
         </ul>
 
-        {/* Resume button */}
-        <a
-          href="/resume.pdf"
-          target="_blank"
-          className="px-4 py-2 text-sm font-medium
-                     border border-white/20 rounded-lg
-                     hover:bg-white hover:text-black transition"
-        >
-          Resume
-        </a>
+        <div className="px-6 mt-10">
+          <Button className="w-full">Resume</Button>
+        </div>
       </div>
-    </nav>
+    </>
   );
 }
