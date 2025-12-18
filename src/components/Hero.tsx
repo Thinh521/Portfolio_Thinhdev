@@ -1,24 +1,27 @@
 "use client";
 
-import Galaxy from "@/components/Galaxy";
 import Image from "next/image";
 import TextType from "./TextType";
 import Button from "./ui/Button/Button";
+import LightRays from "./Galaxy";
 
 export default function Hero() {
   return (
     <section id="home" className="relative min-h-screen overflow-hidden">
       {/* Galaxy background */}
       <div className="absolute inset-0 z-0">
-        {/* <Galaxy
-          density={0.4}
-          starSpeed={0.12}
-          glowIntensity={0.15}
-          rotationSpeed={0.015}
-          twinkleIntensity={0.08}
-          mouseRepulsion={false}
-          mouseInteraction={false}
-        /> */}
+        <LightRays
+          raysOrigin="top-center"
+          raysColor="#ffff"
+          raysSpeed={1.5}
+          lightSpread={0.8}
+          rayLength={1.2}
+          followMouse={true}
+          mouseInfluence={0.1}
+          noiseAmount={0.1}
+          distortion={0.05}
+          className="custom-rays"
+        />
       </div>
 
       <div className="relative z-10 max-w-6xl mx-auto px-6 min-h-screen flex items-center pt-40 md:pt-0">
