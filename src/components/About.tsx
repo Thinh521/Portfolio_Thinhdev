@@ -60,7 +60,7 @@ export default function About() {
           </p>
         </div>
 
-        <div className="bg-linear-to-br from-neutral-900 via-neutral-900 to-neutral-700/50 rounded-lg overflow-hidden border border-neutral-800/50 p-8">
+        <div className="bg-neutral-900 rounded-lg overflow-hidden border border-neutral-700/40 p-8">
           <h3 className="text-xl font-semibold text-white mb-4">
             What I Bring to the Table
           </h3>

@@ -10,7 +10,7 @@ export default function Heading({ title, subtitle }: HeadingProps) {
         {title}
       </h2>
       {subtitle && (
-        <div className="flex items-center gap-4 text-sm uppercase tracking-widest text-gray-400">
+        <div className="flex items-center text-center gap-4 text-sm uppercase tracking-widest text-gray-400">
           <span className="flex-1 h-px bg-white/10" />
           <span>{subtitle}</span>
           <span className="flex-1 h-px bg-white/10" />
