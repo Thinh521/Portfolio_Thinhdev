@@ -10,15 +10,15 @@ export default function Hero() {
     <section id="home" className="relative min-h-screen overflow-hidden">
       {/* Galaxy background */}
       <div className="absolute inset-0 z-0">
-        {/* <Galaxy
-          density={0.8}
-          starSpeed={0.25}
-          glowIntensity={0.25}
-          rotationSpeed={0.03}
-          twinkleIntensity={0.2}
+        <Galaxy
+          density={0.4}
+          starSpeed={0.12}
+          glowIntensity={0.15}
+          rotationSpeed={0.015}
+          twinkleIntensity={0.08}
           mouseRepulsion={false}
           mouseInteraction={false}
-        /> */}
+        />
       </div>
 
       <div className="relative z-10 max-w-6xl mx-auto px-6 min-h-screen flex items-center pt-40 md:pt-0">
