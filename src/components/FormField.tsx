@@ -26,13 +26,12 @@ export default function FormField({
   const error = errors[name];
 
   const baseStyle =
-    "w-full bg-gray-100 dark:bg-neutral-800 border rounded-lg py-2 px-3 text-base outline-none transition-colors focus:ring-1";
+    "w-full bg-neutral-900 rounded-lg overflow-hidden border border-neutral-700/40 py-2 px-3 text-base outline-none transition-colors focus:ring-1";
 
   const normalStyle =
-    "border-gray-200 dark:border-neutral-700/50 focus:ring-neutral-300 dark:focus:ring-neutral-700";
+    "dark:border-neutral-700/50 focus:ring-neutral-300 dark:focus:ring-neutral-700";
 
-  const errorStyle =
-    "border-red-500 focus:ring-red-400 dark:border-red-400 dark:focus:ring-red-500";
+  const errorStyle = "border-red-400 focus:ring-red-400";
 
   const fieldClass = `${baseStyle} ${error ? errorStyle : normalStyle}`;
 
@@ -60,7 +59,7 @@ export default function FormField({
       )}
 
       {error && (
-        <p className="mt-1 text-sm text-red-500">{error.message as string}</p>
+        <p className="mt-1 text-sm text-red-400">{error.message as string}</p>
       )}
     </div>
   );

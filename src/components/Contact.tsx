@@ -9,6 +9,7 @@ import Heading from "./ui/Heading";
 import FormField from "./FormField";
 
 import { ContactFormValues } from "@/types/contact";
+import Button from "./ui/Button/Button";
 
 export default function Contact() {
   const [loading, setLoading] = useState(false);
@@ -45,7 +46,7 @@ export default function Contact() {
 
   return (
     <Section id="contact">
-      <Heading title="Contact" subtitle="Feel free to reach out 👇" />
+      <Heading title="Contact" subtitle="Feel free to reach out" />
 
       <form
         onSubmit={handleSubmit(onSubmit)}
@@ -92,13 +93,13 @@ export default function Contact() {
           errors={errors}
         />
 
-        <button
+        <Button
           type="submit"
           disabled={loading}
-          className="mt-2 rounded-lg bg-white text-black py-2 font-medium hover:opacity-90 disabled:opacity-50 transition"
+          className="mt-2 disabled:opacity-50"
         >
           {loading ? "Đang gửi..." : "Gửi tin nhắn"}
-        </button>
+        </Button>
       </form>
     </Section>
   );
