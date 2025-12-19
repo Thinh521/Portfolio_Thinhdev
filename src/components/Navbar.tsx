@@ -63,15 +63,14 @@ export default function Navbar() {
     <>
       <nav
         className={`
-          fixed z-50 transition-all duration-300
-          ${
-            scrolled
-              ? "top-0 left-0 right-0"
-              : "top-6 left-4 right-4 md:left-20 md:right-20"
-          }
-          backdrop-blur bg-black/60 border border-white/10
-          rounded-xl
-        `}
+                    fixed z-50 transition-all duration-300
+                    ${
+                      scrolled
+                        ? "top-0 left-0 right-0 rounded-none"
+                        : "top-6 left-4 right-4 md:left-20 md:right-20 rounded-xl"
+                    }
+                    backdrop-blur bg-black/60 border border-white/10
+                  `}
       >
         <div className="max-w-6xl mx-auto h-16 px-6 flex items-center justify-between">
           {/* Logo */}
