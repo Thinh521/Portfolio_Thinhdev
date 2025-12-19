@@ -1,4 +1,11 @@
-import { Briefcase, GraduationCap, Award, Play } from "lucide-react";
+import {
+  Briefcase,
+  GraduationCap,
+  Award,
+  Play,
+  Github,
+  ArrowRight,
+} from "lucide-react";
 import Heading from "./ui/Heading";
 import Section from "./ui/Section";
 
@@ -21,7 +28,7 @@ export default function Experience() {
   ];
 
   const education = {
-    degree: "Ho Chi Minh City College of Information Technology",
+    degree: "HCMC College of Information Technology",
     major: "Web Design & Development",
     period: "2023 – 2025",
     achievement: "Graduated with Distinction – GPA: 3.35 / 4.0",
@@ -33,7 +40,7 @@ export default function Experience() {
       period: "08/2025 – 12/2025",
       organizer: "Pione Group",
       description:
-        "DApp truy xuất nguồn gốc sản phẩm nông nghiệp trên nền tảng blockchain, đảm bảo tính minh bạch và chống giả mạo dữ liệu.",
+        "DApps trace agricultural products on a blockchain platform, ensuring transparency and preventing data tampering.",
       responsibilities: [
         "Developed mobile UI using React Native, optimized user experience",
         "Built authentication and account management features",
@@ -77,7 +84,7 @@ export default function Experience() {
             >
               <div className="flex flex-col md:flex-row md:items-center md:justify-between mb-4">
                 <div>
-                  <h4 className="text-xl font-semibold text-white">
+                  <h4 className="text-lg font-semibold text-white">
                     {exp.role}
                   </h4>
                   <p className="text-(--primary) font-medium">{exp.company}</p>
@@ -91,9 +98,9 @@ export default function Experience() {
                 {exp.responsibilities.map((item, idx) => (
                   <li
                     key={idx}
-                    className="text-gray-300 flex items-start gap-3"
+                    className="text-gray-300 flex items-start gap-2"
                   >
-                    <Play className="w-3 h-3 text-(--primary) mt-1 shrink-0 fill-current" />
+                    <Play className="w-2 h-2 text-(--primary) mt-1 shrink-0 fill-current" />
                     <span className="text-sm">{item}</span>
                   </li>
                 ))}
@@ -112,7 +119,7 @@ export default function Experience() {
           <div className="bg-neutral-900 rounded-xl border border-neutral-700/40 p-6">
             <div className="flex flex-col md:flex-row md:items-center md:justify-between mb-3">
               <div>
-                <h4 className="text-xl font-semibold text-white">
+                <h4 className="text-lg font-semibold text-white">
                   {education.degree}
                 </h4>
                 <p className="text-(--primary)">{education.major}</p>
@@ -138,7 +145,7 @@ export default function Experience() {
           Competitions & Projects
         </h3>
 
-        <div className="relative border-l border-white/10 pl-8 space-y-14">
+        <div className="relative border-l-2 border-neutral-700/40 pl-8 space-y-14">
           {competitions.map((comp, index) => (
             <div key={index} className="relative">
               <span className="absolute -left-2.75 top-2 w-5 h-5 rounded-full bg-(--primary) shadow-[0_0_16px_var(--primary)]" />
@@ -161,7 +168,7 @@ export default function Experience() {
                 )}
                 {comp.responsibilities && (
                   <div className="mb-4">
-                    <p className="text-white font-medium mb-2">
+                    <p className="text-white text-sm font-medium mb-2">
                       Role & Responsibilities:
                     </p>
                     <ul className="space-y-2">
@@ -170,7 +177,7 @@ export default function Experience() {
                           key={idx}
                           className="flex items-start gap-2 text-gray-300 text-sm"
                         >
-                          <span className="mt-1 w-1.5 h-1.5 rounded-full bg-(--primary) shrink-0" />
+                          <Play className="w-2 h-2 text-(--primary) mt-1 shrink-0 fill-current" />
                           {item}
                         </li>
                       ))}
@@ -190,9 +197,24 @@ export default function Experience() {
                     href={comp.github}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="inline-block text-sm text-(--primary) hover:underline"
+                    className="
+                                group inline-flex items-center gap-2
+                                text-sm text-white
+                                transition-colors duration-300
+                                hover:text-(--primary)
+                              "
                   >
-                    🔗 Github Repository
+                    <Github
+                      size={14}
+                      className="transition-colors duration-300"
+                    />
+                    <span className="transition-colors duration-300">
+                      Github Repository
+                    </span>
+                    <ArrowRight
+                      size={14}
+                      className="transition-all duration-300 group-hover:translate-x-1"
+                    />
                   </a>
                 )}
               </div>

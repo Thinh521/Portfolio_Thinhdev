@@ -10,6 +10,7 @@ import FormField from "./FormField";
 
 import { ContactFormValues } from "@/types/contact";
 import Button from "./ui/Button/Button";
+import { Send } from "lucide-react";
 
 export default function Contact() {
   const [loading, setLoading] = useState(false);
@@ -35,10 +36,10 @@ export default function Contact() {
 
       if (!res.ok) throw new Error("Submit failed");
 
-      toast.success("Cảm ơn bạn! Tin nhắn đã được gửi.");
+      toast.success("Thank you! The message has been successfully sent.");
       reset();
     } catch {
-      toast.error("Có lỗi xảy ra, vui lòng thử lại.");
+      toast.error("An error occurred, please try again.");
     } finally {
       setLoading(false);
     }
@@ -54,39 +55,39 @@ export default function Contact() {
       >
         <div className="flex flex-col md:flex-row gap-4">
           <FormField
-            label="Họ và tên"
+            label="Full Name"
             name="name"
             register={register}
             errors={errors}
           />
 
           <FormField
-            label="Số điện thoại"
+            label="Phone"
             name="phone"
             type="tel"
             register={register}
             errors={errors}
             pattern={{
               value: /^[0-9]{9,11}$/,
-              message: "Số điện thoại không hợp lệ",
+              message: "Invalid phone number",
             }}
           />
         </div>
 
         <FormField
-          label="Email của bạn"
+          label="Email"
           name="email"
           type="email"
           register={register}
           errors={errors}
           pattern={{
             value: /^\S+@\S+$/i,
-            message: "Email không hợp lệ",
+            message: "Invalid email",
           }}
         />
 
         <FormField
-          label="Nội dung"
+          label="Content"
           name="message"
           type="textarea"
           register={register}
@@ -95,10 +96,11 @@ export default function Contact() {
 
         <Button
           type="submit"
+          leftIcon={<Send size={16} />}
           disabled={loading}
           className="mt-2 disabled:opacity-50"
         >
-          {loading ? "Đang gửi..." : "Gửi tin nhắn"}
+          {loading ? "Sending..." : "Send a message"}
         </Button>
       </form>
     </Section>

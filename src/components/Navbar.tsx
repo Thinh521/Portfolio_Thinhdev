@@ -154,39 +154,39 @@ export default function Navbar() {
                     setOpen(false);
                   }}
                   className={`
-            group relative flex items-center
-            text-lg
-            transition-all duration-300 ease-out
-            will-change-transform
-            ${
-              isActive
-                ? "text-(--primary) translate-x-3"
-                : "text-white hover:text-(--primary) hover:translate-x-3"
-            }
-          `}
+                              group relative flex items-center
+                              text-lg
+                              transition-all duration-300 ease-out
+                              will-change-transform
+                              ${
+                                isActive
+                                  ? "text-(--primary) translate-x-3"
+                                  : "text-white hover:text-(--primary) hover:translate-x-3"
+                              }
+                            `}
                 >
                   {/* Indicator */}
                   <span
                     className={`
-              absolute left-0
-              w-2.5 h-2.5 bg-(--primary)
-              rotate-45
-              transition-all duration-300 ease-out
-              ${
-                isActive
-                  ? "opacity-100 scale-100"
-                  : "opacity-0 scale-75 group-hover:opacity-100 group-hover:scale-100"
-              }
-            `}
+                                absolute left-0
+                                w-2.5 h-2.5 bg-(--primary)
+                                rotate-45
+                                transition-all duration-300 ease-out
+                                ${
+                                  isActive
+                                    ? "opacity-100 scale-100"
+                                    : "opacity-0 scale-75 group-hover:opacity-100 group-hover:scale-100"
+                                }
+                              `}
                   />
 
                   {/* Text */}
                   <span
                     className={`
-              relative
-              transition-all duration-300 ease-out
-              ${isActive ? "ml-6" : "ml-0 group-hover:ml-6"}
-            `}
+                                relative
+                                transition-all duration-300 ease-out
+                                ${isActive ? "ml-6" : "ml-0 group-hover:ml-6"}
+                              `}
                   >
                     {link.label}
                   </span>

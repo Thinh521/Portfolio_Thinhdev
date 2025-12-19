@@ -1,6 +1,6 @@
 import Section from "./ui/Section";
 import Heading from "./ui/Heading";
-import { Play } from "lucide-react";
+import { Play, Send } from "lucide-react";
 import Button from "./ui/Button/Button";
 
 export default function About() {
@@ -66,8 +66,8 @@ export default function About() {
           </h3>
 
           <div className="space-y-4">
-            <div className="flex gap-3">
-              <Play className="w-3 h-3 text-(--primary) mt-1 shrink-0 fill-current" />
+            <div className="flex gap-2">
+              <Play className="w-2 h-2 text-(--primary) mt-1 shrink-0 fill-current" />
               <p className="text-sm text-gray-400">
                 <span className="text-sm font-medium text-white">
                   Clean Code:
@@ -77,8 +77,8 @@ export default function About() {
               </p>
             </div>
 
-            <div className="flex gap-3">
-              <Play className="w-3 h-3 text-(--primary) mt-1 shrink-0 fill-current" />
+            <div className="flex gap-2">
+              <Play className="w-2 h-2 text-(--primary) mt-1 shrink-0 fill-current" />
               <p className="text-sm text-gray-400">
                 <span className="text-sm font-medium text-white">
                   Problem Solving:
@@ -88,8 +88,8 @@ export default function About() {
               </p>
             </div>
 
-            <div className="flex gap-3">
-              <Play className="w-3 h-3 text-(--primary) mt-1 shrink-0 fill-current" />
+            <div className="flex gap-2">
+              <Play className="w-2 h-2 text-(--primary) mt-1 shrink-0 fill-current" />
               <p className="text-sm text-gray-400">
                 <span className="text-sm font-medium text-white">
                   Collaboration:
@@ -99,8 +99,8 @@ export default function About() {
               </p>
             </div>
 
-            <div className="flex gap-3">
-              <Play className="w-3 h-3 text-(--primary) mt-1 shrink-0 fill-current" />
+            <div className="flex gap-2">
+              <Play className="w-2 h-2 text-(--primary) mt-1 shrink-0 fill-current" />
               <p className="text-sm text-gray-400">
                 <span className="text-sm font-medium text-white">
                   Continuous Learning:
@@ -119,7 +119,9 @@ export default function About() {
             skills while delivering high-quality, practical solutions through
             technology.
           </p>
-          <Button className="w-60">Let's Work Together</Button>
+          <Button leftIcon={<Send size={16} />} className="w-60">
+            Let's Work Together
+          </Button>
         </div>
       </div>
     </Section>

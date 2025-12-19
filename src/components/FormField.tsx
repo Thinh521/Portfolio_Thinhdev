@@ -29,14 +29,14 @@ export default function FormField({
     "w-full bg-neutral-900 rounded-lg overflow-hidden border border-neutral-700/40 py-2 px-3 text-base outline-none transition-colors focus:ring-1";
 
   const normalStyle =
-    "dark:border-neutral-700/50 focus:ring-neutral-300 dark:focus:ring-neutral-700";
+    "border-neutral-700/40 focus:border-(--primary) focus:ring-(--primary)";
 
   const errorStyle = "border-red-400 focus:ring-red-400";
 
   const fieldClass = `${baseStyle} ${error ? errorStyle : normalStyle}`;
 
   const registerOptions = {
-    required: `${label} là bắt buộc`,
+    required: `Please enter ${label.toLowerCase()}`,
     pattern,
   };
 

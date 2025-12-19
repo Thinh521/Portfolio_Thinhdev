@@ -4,6 +4,7 @@ import Navbar from "@/components/Navbar";
 import "./globals.css";
 import InteractiveGridBackground from "@/components/Background";
 import BeamGridBackground from "@/components/Galaxy";
+import { Toaster } from "sonner";
 
 const geistSans = Geist({
   subsets: ["latin"],
@@ -72,6 +73,8 @@ export default function RootLayout({
 
         <Navbar />
         <main className="relative z-10">{children}</main>
+
+        <Toaster position="top-right" richColors closeButton />
       </body>
     </html>
   );

@@ -1,7 +1,7 @@
 import Section from "./ui/Section";
 import Heading from "./ui/Heading";
 import { projects } from "@/data/projects";
-import { ArrowRight } from "lucide-react";
+import { ArrowRight, Github } from "lucide-react";
 import Image from "next/image";
 import { BorderBeam } from "./ui/Border";
 
@@ -69,7 +69,8 @@ export default function Projects() {
                 className="inline-flex items-center gap-2 text-sm
                              text-white hover:underline"
               >
-                <span>View GitHub</span>
+                <Github size={14} />
+                <span> Github Repository</span>
                 <ArrowRight size={14} />
               </a>
             </div>
