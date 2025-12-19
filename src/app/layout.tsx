@@ -32,7 +32,7 @@ export default function RootLayout({
     ${geistSans.variable}
     ${geistMono.variable}
     antialiased
-    bg-[#0b0f14]
+    bg-[#111827]
     text-white
     relative
     min-h-screen
@@ -54,18 +54,20 @@ export default function RootLayout({
             idleSpeed={1}
           />
 
-          <InteractiveGridBackground
-            gridSize={40}
-            gridColor="#000"
-            darkGridColor="#1f2937"
-            effectColor="rgba(255,255,255,0.4)"
-            darkEffectColor="rgba(255,255,255,0.25)"
-            trailLength={4}
-            glow
-            glowRadius={24}
-            showFade
-            fadeIntensity={18}
-          />
+          <div className="hidden md:block">
+            <InteractiveGridBackground
+              gridSize={40}
+              gridColor="#000"
+              darkGridColor="#1f2937"
+              effectColor="rgba(255,255,255,0.4)"
+              darkEffectColor="rgba(255,255,255,0.25)"
+              trailLength={4}
+              glow
+              glowRadius={24}
+              showFade
+              fadeIntensity={18}
+            />
+          </div>
         </div>
 
         <Navbar />
