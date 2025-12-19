@@ -75,7 +75,7 @@ export default function Navbar() {
         <div className="max-w-6xl mx-auto h-16 px-6 flex items-center justify-between">
           {/* Logo */}
           <span className="font-bold text-lg tracking-tight">
-            thjnh<span className="text-white/60">.dev</span>
+            thjnh<span className="text-(--primary)">.dev</span>
           </span>
 
           {/* Desktop menu */}
@@ -134,7 +134,7 @@ export default function Navbar() {
       >
         <div className="p-6 flex items-center justify-between">
           <span className="font-bold text-lg">
-            thjnh<span className="text-white/60">.dev</span>
+            thjnh<span className="text-(--primary)">.dev</span>
           </span>
           <button onClick={() => setOpen(false)}>
             <X size={22} />

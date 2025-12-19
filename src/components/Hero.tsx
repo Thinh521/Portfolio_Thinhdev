@@ -5,6 +5,7 @@ import { Github, Facebook, Instagram, Music2 } from "lucide-react";
 
 import TextType from "./TextType";
 import Button from "./ui/Button/Button";
+import ImageSwiperPage from "./ImageSwiper";
 
 const SOCIALS = [
   {
@@ -89,15 +90,7 @@ export default function Hero() {
 
           {/* Right image */}
           <div className="flex items-center justify-center md:col-span-2">
-            <div className="relative h-56 w-56 overflow-hidden rounded-full border border-white/20 backdrop-blur md:h-64 md:w-64">
-              <Image
-                src="/images/avatar.png"
-                alt="Thịnh"
-                fill
-                priority
-                className="object-cover"
-              />
-            </div>
+            <ImageSwiperPage />
           </div>
         </div>
       </div>
