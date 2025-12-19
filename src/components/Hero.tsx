@@ -82,8 +82,8 @@ export default function Hero() {
             </div>
 
             <div className="mt-6 flex gap-4">
-              <Button>View Projects</Button>
-              <Button>Contact Me</Button>
+              <Button href="#projects">View Projects</Button>
+              <Button href="#contact">Contact Me</Button>
             </div>
           </div>
 
