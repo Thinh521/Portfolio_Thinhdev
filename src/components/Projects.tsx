@@ -3,6 +3,7 @@ import Heading from "./ui/Heading";
 import { projects } from "@/data/projects";
 import { ArrowRight } from "lucide-react";
 import Image from "next/image";
+import { BorderBeam } from "./ui/Border";
 
 export default function Projects() {
   return (
@@ -17,21 +18,21 @@ export default function Projects() {
           <div
             key={project.id}
             className="group relative overflow-hidden rounded-lg
-                       border border-neutral-700/40
-                       bg-neutral-900 p-6 transition-colors duration-300"
+                         border border-neutral-700/40
+                         bg-neutral-900 p-6 transition-colors duration-300"
           >
             <div
               className="absolute inset-0 
-             translate-x-full group-hover:translate-x-0
-             transition-transform duration-500 ease-out
-             z-0
-             bg-[linear-gradient(-300deg,#ff6525,#ff9601)]"
+               translate-x-full group-hover:translate-x-0
+               transition-transform duration-500 ease-out
+               z-0
+               bg-[linear-gradient(-300deg,#ff6525,#ff9601)]"
             />
             <div
               className="absolute inset-0
-                         -translate-x-full group-hover:translate-x-0
-                         transition-transform duration-700 ease-out
-                         z-10 pointer-events-none"
+                           -translate-x-full group-hover:translate-x-0
+                           transition-transform duration-700 ease-out
+                           z-10 pointer-events-none"
             >
               <Image
                 src="/images/shape_1.png"
@@ -66,7 +67,7 @@ export default function Projects() {
                 target="_blank"
                 rel="noopener noreferrer"
                 className="inline-flex items-center gap-2 text-sm
-                           text-white hover:underline"
+                             text-white hover:underline"
               >
                 <span>View GitHub</span>
                 <ArrowRight size={14} />

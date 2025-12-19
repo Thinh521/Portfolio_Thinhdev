@@ -1,6 +1,5 @@
 "use client";
 
-import Image from "next/image";
 import { Github, Facebook, Instagram, Music2 } from "lucide-react";
 
 import TextType from "./TextType";
