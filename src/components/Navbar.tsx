@@ -81,15 +81,15 @@ export default function Navbar() {
 
           {/* Desktop menu */}
           <div className="relative hidden md:block">
-            <ul ref={listRef} className="flex gap-8 text-sm relative">
+            <ul ref={listRef} className="flex gap-6 text-sm relative">
               {links.map((link) => (
                 <li key={link.href}>
                   <a
                     href={link.href}
-                    className={`transition ${
+                    className={`transition px-2 py-4 ${
                       active === link.href
                         ? "text-(--primary)"
-                        : "text-gray-400 hover:text-white"
+                        : "text-white hover:text-(--primary)"
                     }`}
                   >
                     {link.label}
@@ -100,7 +100,7 @@ export default function Navbar() {
               <span
                 ref={indicatorRef}
                 className="absolute -bottom-2 left-0 h-0.5
-                           bg-(--primary)
+                           bg-(--primary) rounded-full
                            transition-all duration-300"
               />
             </ul>
@@ -120,7 +120,7 @@ export default function Navbar() {
 
       {/* ===== Mobile menu overlay ===== */}
       <div
-        className={`fixed inset-0 z-40 bg-black/70 backdrop-blur
+        className={`fixed inset-0 z-50 bg-black/70 backdrop-blur
                     transition-opacity duration-300
                     ${open ? "opacity-100 visible" : "opacity-0 invisible"}`}
         onClick={() => setOpen(false)}
@@ -143,24 +143,58 @@ export default function Navbar() {
         </div>
 
         <ul className="flex flex-col gap-6 px-6 mt-8">
-          {links.map((link) => (
-            <li key={link.href}>
-              <a
-                href={link.href}
-                onClick={() => {
-                  setActive(link.href);
-                  setOpen(false);
-                }}
-                className={`block text-lg transition ${
-                  active === link.href
-                    ? "text-(--primary)"
-                    : "text-gray-400 hover:text-white"
-                }`}
-              >
-                {link.label}
-              </a>
-            </li>
-          ))}
+          {links.map((link) => {
+            const isActive = active === link.href;
+
+            return (
+              <li key={link.href}>
+                <a
+                  href={link.href}
+                  onClick={() => {
+                    setActive(link.href);
+                    setOpen(false);
+                  }}
+                  className={`
+            group relative flex items-center
+            text-lg
+            transition-all duration-300 ease-out
+            will-change-transform
+            ${
+              isActive
+                ? "text-(--primary) translate-x-3"
+                : "text-white hover:text-(--primary) hover:translate-x-3"
+            }
+          `}
+                >
+                  {/* Indicator */}
+                  <span
+                    className={`
+              absolute left-0
+              w-2.5 h-2.5 bg-(--primary)
+              rotate-45
+              transition-all duration-300 ease-out
+              ${
+                isActive
+                  ? "opacity-100 scale-100"
+                  : "opacity-0 scale-75 group-hover:opacity-100 group-hover:scale-100"
+              }
+            `}
+                  />
+
+                  {/* Text */}
+                  <span
+                    className={`
+              relative
+              transition-all duration-300 ease-out
+              ${isActive ? "ml-6" : "ml-0 group-hover:ml-6"}
+            `}
+                  >
+                    {link.label}
+                  </span>
+                </a>
+              </li>
+            );
+          })}
         </ul>
 
         <div className="px-6 mt-10">
